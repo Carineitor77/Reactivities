@@ -1,4 +1,5 @@
 ﻿.vs
+Reactivities.sln
 
 API/bin
 API/obj
@@ -12,3 +13,6 @@ Domain/obj
 
 Persistence/bin
 Persistence/obj
+Persistence/Migrations
+
+client-app/node_modules

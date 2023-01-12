@@ -1,0 +1,14 @@
+﻿.vs
+
+API/bin
+API/obj
+API/appsettings.Development
+
+Application/bin
+Application/obj
+
+Domain/bin
+Domain/obj
+
+Persistence/bin
+Persistence/obj

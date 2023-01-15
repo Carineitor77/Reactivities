@@ -41,16 +41,7 @@ namespace Application.Activities
 
                 if (activity == null) return null;
 
-                // _mapper.Map(request.Activity, activity); // mapper work doesn't correct here
-                // here is must to use DTO, CreateMap<Activity, Activity>() work doesn't correct here
-                // SaveChangesAsync() doesn't see changes
-
-                activity.Title = request.Activity.Title;
-                activity.Date = request.Activity.Date;
-                activity.Description = request.Activity.Description;
-                activity.Category = request.Activity.Category;
-                activity.City = request.Activity.City;
-                activity.Venue = request.Activity.Venue;
+                _mapper.Map(request.Activity, activity);
 
                 return !(await _context.SaveChangesAsync() > 0)
                     ? Result<Unit>.Failure("Failed to update the activity")

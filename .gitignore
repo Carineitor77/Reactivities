@@ -3,7 +3,7 @@ Reactivities.sln
 
 API/bin
 API/obj
-API/appsettings.Development.json
+API/appsettings.json
 
 Application/bin
 Application/obj

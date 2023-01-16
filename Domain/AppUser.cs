@@ -9,5 +9,6 @@ namespace Domain
         public string Bio { get; set; } = string.Empty;
 
         public ICollection<ActivityAttendee> Activities { get; set; }
+        public ICollection<Photo> Photos { get; set; }
     }
 }

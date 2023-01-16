@@ -13,7 +13,7 @@ export default observer(function ProfilePage() {
   const {loadingProfile, loadProfile, profile} = profileStore;
 
   useEffect(() => {
-    loadProfile(username!);
+    if (username) loadProfile(username);
   }, [loadProfile, username])
 
   if (loadingProfile) return <LoadingComponent content="Loading profile..." />

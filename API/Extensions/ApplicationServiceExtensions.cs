@@ -4,11 +4,13 @@ using Application.Interfaces;
 using Infrastructure.Photos;
 using Infrastructure.Security;
 using MediatR;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Persistence;
+using System;
 
 namespace API.Extensions
 {
@@ -56,6 +58,7 @@ namespace API.Extensions
                 {
                     policy.AllowAnyMethod()
                           .AllowAnyHeader()
+                          .AllowCredentials()
                           .WithOrigins("http://localhost:3000");
                 });
             });
@@ -65,6 +68,10 @@ namespace API.Extensions
             services.AddScoped<IUserAccessor, UserAccessor>();
             services.AddScoped<IPhotoAccessor, PhotoAccessor>();
             services.Configure<CloudinarySettings>(config.GetSection("Cloudinary"));
+            services.AddSignalR(options => {
+                //options.MaximumReceiveMessageSize = 102400000;
+                options.EnableDetailedErrors = true;
+            });
 
             return services;
         }

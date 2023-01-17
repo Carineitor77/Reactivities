@@ -11,6 +11,7 @@ namespace Persistence
         public DbSet<Activity> Activities => Set<Activity>();
         public DbSet<ActivityAttendee> ActivityAttendees => Set<ActivityAttendee>();
         public DbSet<Photo> Photos => Set<Photo>();
+        public DbSet<Comment> Comments => Set<Comment>();
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -27,6 +28,11 @@ namespace Persistence
                 .HasOne(u => u.Activity)
                 .WithMany(u => u.Attendees)
                 .HasForeignKey(aa => aa.ActivityId);
+
+            builder.Entity<Comment>()
+                .HasOne(a => a.Activity)
+                .WithMany(c => c.Comments)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
